@@ -1,6 +1,6 @@
 ## About
 
-Simple Pokémon application built using Express JS framework and JSX view engine. Created Index, New, Create, and Show routes to display Pokémon images. To navigate to the next page click on the Pokéball.
+Simple Pokémon application built using Express framework and JSX view engine. Created Index, New, Create, and Show routes to display Pokémon images. To navigate to the next page click on the Pokéball.
 
 ### Installation Instructions
 
