@@ -2,7 +2,6 @@ const React = require('react')
 
 class Home extends React.Component {
     render() {
-
         return(
             <div style={{height: '100vh', width: '100vw', display: 'grid', gridTemplateRows: '100px 1fr'}}>
                 <div style={{gridRow: '1/2', backgroundColor: 'lightcoral', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
