@@ -4,9 +4,9 @@ class DefaultLayout extends React.Component {
   render() {
     return (
       <html>
-        <head><title>{this.props.title}</title></head>
+        <head><title>{this.props.docTitle}</title></head>
         <body style={{margin: '0px'}}>
-        <h1>{this.props.title}</h1>
+        {/* <h1>{this.props.title}</h1> */}
         {this.props.children}
         </body>
       </html>
