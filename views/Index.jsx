@@ -19,13 +19,19 @@ class Index extends React.Component {
                             </p>
                         </div>
                         <div style={{gridRow: '2/3', overflow: 'scroll', height: '50vh'}}>
-                            <ul style={{listStyle: 'inside', lineHeight: '0.3in'}}>
-                                {pokemons.map((pokemon, index) => {
+                            <ul style={{listStyle: 'inside', lineHeight: '0.8in'}}>
+                                {pokemons.map((pokemon) => {
                                     return(
-                                        <li key={pokemon.name} style={{textTransform: 'capitalize'}}>
-                                            <a href={`/pokemon/${index}`}>
+                                        <li key={pokemon.name} style={{textTransform: 'capitalize', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr'}}>
+                                            <a style={{fontSize: '17px', gridColumn: '1/2'}} href={`/pokemon/${pokemon._id}`}>
                                                 {pokemon.name}
                                             </a>
+                                            <a style={{ textDecoration: 'none', color: 'blue', gridColumn: '2/3'}} href={`/pokemon/${pokemon._id}/edit`}>
+                                                🖋️ Edit Pokémon
+                                            </a>
+                                            <form style={{display: 'inline', gridColumn: '3/4'}} action={`/pokemon/${pokemon._id}?_method=DELETE`} method='POST'>
+                                                <input style={{fontFamily: 'Georgia', marginLeft: '30px', cursor: 'pointer', borderRadius: '10px', padding: '5px 10px', color: 'red', border: '2px black solid', backgroundColor:'white'}} type="submit" value="❌ DELETE"/>
+                                            </form>
                                         </li>
                                     )
                                 })}

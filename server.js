@@ -5,7 +5,7 @@ const app = express()
 //Packages and Mongoose
 const dotenv = require('dotenv')
 dotenv.config()
-// console.log(process.env)     //.env is connected
+// console.log(process.env)
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 
@@ -43,8 +43,13 @@ app.use(methodOverride('_method'))
     })
 
     //Index
-        app.get('/pokemon', (req, res) => {
-            res.render('Index', {pokemons: pokemon})
+        app.get('/pokemon', async (req, res) => {
+            try{
+                const pokemon = await Pokemon.find()
+                res.render('Index', {pokemons: pokemon})
+            }catch(error){
+                console.error(error)
+            }
         })
 
     //New
@@ -53,20 +58,54 @@ app.use(methodOverride('_method'))
         })
 
     //Delete
+        app.delete('/pokemon/:id', async(req, res) => {
+            try{
+                await Pokemon.findByIdAndRemove(req.params.id)
+                res.redirect('/pokemon')
+            }catch(error){
+                console.error(error)
+            }
+        })
+
     //Update
+        app.put('/pokemon/:id', async(req, res) => {
+            try{
+                await Pokemon.findByIdAndUpdate(req.params.id, req.body)
+                res.redirect(`/pokemon/${req.params.id}`)
+            }catch(error){
+                console.error(error)
+            }
+        })
 
     //Create
-        app.post('/pokemon', (req, res) => {
-            console.log(req.body)
-            pokemon.push(req.body)
-            res.redirect('/pokemon')
+        app.post('/pokemon', async(req, res) => {
+            try{
+                await Pokemon.create(req.body)
+                res.redirect('/pokemon')
+            }catch(error){
+                console.error(error)
+            }
         })
 
     //Edit
+        app.get('/pokemon/:id/edit', async(req, res) => {
+            try{
+                const foundPokemon = await Pokemon.findById(req.params.id)
+                res.render('Edit', {pokemon: foundPokemon})
+            }catch(error){
+                console.error(error)
+            }
+        })
 
     //Show
-        app.get('/pokemon/:id', (req, res) => {
-            res.render('Show', {pokemon: pokemon[req.params.id]})
+        app.get('/pokemon/:id', async (req, res) => {
+            try{
+                const pokemon = await Pokemon.findById(req.params.id)
+                console.log(req.params.id)
+                res.render('Show', {pokemon})
+            }catch(error){
+                console.error(error)
+            }
         })
 
 
