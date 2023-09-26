@@ -1,6 +1,6 @@
 ## About
 
-Simple Pokémon application built using Express framework and JSX view engine. Created Index, New, Create, and Show routes to display Pokémon images. To navigate to the next page click on the Pokéball.
+Simple Pokémon application built using Node, Express framework and JSX view engine. Created Index, New, Delete, Update, Create, Edit and Show routes to display Pokémon images. To navigate to the next page click on the Pokéball.
 
 ### Installation Instructions
 
@@ -9,7 +9,9 @@ Simple Pokémon application built using Express framework and JSX view engine. C
 2. Install NPM packages on local machine
 
    - `npm i express`
-   - `npm i jsx-view-engine react react-dom`
+   - `npm i jsx-view-engine react react-dom dotenv`
+   - `npm i mongoose`
+   - `npm i method-override`
 
 3. Install Nodemon dev tool on local machine
 
